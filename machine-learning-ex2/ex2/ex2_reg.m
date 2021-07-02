@@ -25,7 +25,8 @@ clear ; close all; clc
 %  contains the label (y).
 
 data = load('ex2data2.txt');
-X = data(:, [1, 2]); y = data(:, 3);
+X = data(:, [1, 2]); 
+y = data(:, 3);
 
 plotData(X, y);
 
@@ -39,7 +40,7 @@ ylabel('Microchip Test 2')
 % Specified in plot order
 legend('y = 1', 'y = 0')
 hold off;
-
+pause;
 
 %% =========== Part 1: Regularized Logistic Regression ============
 %  In this part, you are given a dataset with data points that are not
@@ -107,7 +108,7 @@ pause;
 initial_theta = zeros(size(X, 2), 1);
 
 % Set regularization parameter lambda to 1 (you should vary this)
-lambda = 1;
+lambda = 0;
 
 % Set Options
 options = optimset('GradObj', 'on', 'MaxIter', 400);
@@ -132,5 +133,6 @@ hold off;
 p = predict(theta, X);
 
 fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
-fprintf('Expected accuracy (with lambda = 1): 83.1 (approx)\n');
-
+fprintf('Expected accuracy (with lambda = %f): 83.1 (approx)\n', lambda);
+pause;
+close all;

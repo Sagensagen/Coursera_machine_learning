@@ -20,13 +20,22 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+sig_theta = sigmoid(X*theta);
+
+pos = (-y' * log(sig_theta));
+neg = (1-y') * log(1-sig_theta);
+
+J = 1/m * (pos - neg);
 
 
 
-
-
-
-
+grad = 1/m * (X' * (sig_theta-y));
 % =============================================================
 
+%fprintf('things!\n');
+%disp(size(X))
+%disp(size(sig_theta))
+%disp(size(y))
+%disp(size(J))
+%disp(J)
 end

@@ -47,7 +47,7 @@ J = ((-y)'*log(g) - (1-y)'*log(1-g))/m +penalty;
 %           temp = theta; 
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
-%
+%           temp = theta2nd in this case
 
 grad =grad + (1./m)*(X'*(g-y)+lambda*theta2nd);
 

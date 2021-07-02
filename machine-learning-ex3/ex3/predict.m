@@ -20,25 +20,39 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+fprintf('inside predict\n')
+%appends to the first column ones
+disp('X= '), disp(size(X))
 X = [ones(m, 1) X];
-size(X)
+disp('X after = '), disp(size(X))
+
+
+%first activation functions through theta1
 z2 = X*Theta1';
-x2 = [ones(size(z2),1), sigmoid(z2)];
+disp('z2 = X*theta1"'), disp(size(z2))
+
+%logistic function of the first layer
+
+x2 = sigmoid(z2);
+disp('x2 = sigmoid(z2)'), disp(size(x2));
+%Again, appends to the first column ones 
+x2 = [ones(size(z2),1), x2];
+disp(size(x2))
+%Second activation functions through theta2
+disp("z3= x2*theta2'")
 z3 = x2*Theta2';
+disp(size(z3))
+%logistic function of the second layer
 x3 = sigmoid(z3);
-
-
-%size(Theta1')
-%size(z2)
-%size(x2)
-%size(Theta2')
-%size(z3)
-%size(x3)
+disp(size(x3))
+first_row = (x3(1:1,2:end))
+%size of x3 = [5000 x 10]
+%the second dimension describes which classification the predicitons are closest to.
+disp("highest val"), max(first_row)
 
 [pred_max, idx_max] = max(x3, [], 2);
 p = idx_max;
-
 % =========================================================================
-
-
+size(idx_max)
+idx_max(1:1,1) 
 end
